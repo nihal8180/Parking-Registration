@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<!-- html2pdf CDN-->
+	<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js">
+	</script>
+
+	<style>
+        .info{
+            display: flex;
+        }
+        #photo{
+            margin-left: 200px;
+            margin-bottom: 70px;
+            z-index: 8000;
+        }
+		.container {
+			position: fixed;
+			top: 20%;
+			left: 28%;
+			margin-top: -65px;
+			margin-left: -100px;
+			border-radius: 7px;
+		}
+
+		.card {
+			box-sizing: content-box;
+			width: 700px;
+			height: 250px;
+			padding: 30px;
+			border: 1px solid black;
+			font-style: sans-serif;
+            background-color: white;
+            background: url("static/assets/img/kiet.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: rgb(255, 255, 255,0.6);
+             background-blend-mode: lighten;
+		}
+
+		#button {
+			background-color: #4caf50;
+			border-radius: 5px;
+			margin-left: 650px;
+			margin-bottom: 5px;
+			color: white;
+		}
+
+		h2{
+			text-align: center;
+			color: #2242e6;
+		}
+        h1{
+            text-align: center;
+            color: rgb(74, 238, 74);
+        }
+        h3{
+            text-align: center;
+            color: black;
+        }
+	</style>
+</head>
+
+<body>
+	<div class="container">
+        <h1>REGISTRATION SUCCESSFULL</h1>
+        <H3>DOWNLOAD AND SHOW THE SLIP BELOW AT THE ENTRY GATE.</H3>
+		<button id="button">Generate PDF</button>
+		<div class="card" id="makepdf">
+			<h2>KIET GROUP OF INSTITUTIONS</h2>
+            <H4>TEMPORARY PARKING ACCESSSS</H4>
+			<ul>
+				<li>
+                    <div class="info">
+					<h4>
+						Name: {{name}}<br>
+                        University Roll Number : {{roll}}<br>
+                        Course : {{course}}<br>
+                        Branch : {{branch}}<br>
+                        Id : {{id}}<br>
+                        Number Plate : {{nump}}<br>
+                        {{img4}}
+					</h4>
+                    <img src="static/assets/img/5.jpg" id="photo">
+               
+                    </div>
+				</li>
+				<li>
+				   <p>This slip is temporary.Permanent slip shall be given after document verification</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<script>
+		var button = document.getElementById("button");
+		var makepdf = document.getElementById("makepdf");
+
+		button.addEventListener("click", function () {
+			html2pdf().from(makepdf).save();
+		});
+	</script>
+</body>
+
+</html>
